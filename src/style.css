@@ -279,3 +279,14 @@ button:focus-visible{outline:2px solid #f1bdc9;outline-offset:5px}
  .cinema-beat{display:none}
  .cinema-title-wrap,.cinema-name,.cinema-subtitle,.cinema-enter,.cinema-foot{opacity:1!important;animation:none!important}
 }
+
+
+/* Prevent the intro overlay from ever revealing the home page beneath it */
+.cinema-intro{
+  opacity:1!important;
+  animation:none!important;
+  background:#090609;
+  background-image:radial-gradient(ellipse at 50% 48%,#572036 0%,#24101a 55%,#09070a 100%);
+}
+.cinema-intro .cinema-frame{animation:none!important;opacity:1!important;filter:none!important;transform:none!important}
+.cinema-intro .cinema-overline{animation:none!important;opacity:1!important}
