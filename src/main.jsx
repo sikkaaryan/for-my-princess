@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import './style.css';
 
@@ -21,9 +21,27 @@ function App() {
   const [entered, setEntered] = useState(false);
   const [hearts, setHearts] = useState([]);
 
-  useLayoutEffect(() => {
-    document.body.classList.remove('booting');
-    document.getElementById('boot-screen')?.remove();
+  useEffect(() => {
+    let cancelled = false;
+    const revealIntro = () => {
+      // Let the stylesheet and the intro DOM reach the browser before
+      // removing the static first-paint cover.
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        if (cancelled) return;
+        document.body.classList.remove('booting');
+        document.getElementById('boot-screen')?.remove();
+      }));
+    };
+    if (document.readyState === 'complete') {
+      if (document.fonts?.ready) document.fonts.ready.then(revealIntro);
+      else revealIntro();
+    } else {
+      window.addEventListener('load', revealIntro, { once: true });
+    }
+    return () => {
+      cancelled = true;
+      window.removeEventListener('load', revealIntro);
+    };
   }, []);
 
   useEffect(() => {
