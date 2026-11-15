@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import './style.css';
 
@@ -21,8 +21,9 @@ function App() {
   const [entered, setEntered] = useState(false);
   const [hearts, setHearts] = useState([]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     document.body.classList.remove('booting');
+    document.getElementById('boot-screen')?.remove();
   }, []);
 
   useEffect(() => {
