@@ -47,7 +47,20 @@ function App() {
       </div>
 
       {!entered && <section className="cinema-intro" aria-label="A little note for Princess">
-        <div className="cinema-frame"><span className="cinema-overline">A LITTLE SOMETHING, FROM MY HEART</span><div className="cinema-star">✦</div><p>for the one I call</p><h1>Princess<span>.</span></h1><div className="cinema-rule" /><p className="cinema-subtitle">Some words are worth slowing down for.</p><button className="button-primary cinema-enter" onClick={() => setEntered(true)}>Step into my little world <span>↗</span></button><span className="cinema-foot">MADE WITH LOVE · JUST FOR YOU</span></div>
+        <div className="cinema-letterbox top" /><div className="cinema-letterbox bottom" />
+        <div className="cinema-light" aria-hidden="true" />
+        <div className="cinema-particles" aria-hidden="true"><i>✦</i><i>·</i><i>✧</i><i>·</i><i>✦</i><i>·</i><i>✧</i></div>
+        <div className="cinema-frame">
+          <span className="cinema-overline">A MESSAGE I SHOULD HAVE SAID SOONER</span>
+          <div className="cinema-beat beat-one">In every story,</div>
+          <div className="cinema-beat beat-two">there are moments</div>
+          <div className="cinema-beat beat-three">we wish we could rewrite.</div>
+          <div className="cinema-title-wrap"><div className="cinema-title-rule" /><p>but some people</p><h1>are worth <em>everything.</em></h1><div className="cinema-title-rule" /></div>
+          <div className="cinema-name"><span>FOR MY</span><strong>Princess<span>.</span></strong></div>
+          <p className="cinema-subtitle">This is for you. And only you.</p>
+          <button className="button-primary cinema-enter" onClick={() => setEntered(true)}>Begin <span>↗</span></button>
+          <span className="cinema-foot">TAKE YOUR TIME · READ WITH YOUR HEART</span>
+        </div>
       </section>}
 
       <header className="masthead">
