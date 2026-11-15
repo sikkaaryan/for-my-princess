@@ -18,6 +18,7 @@ function App() {
   const [step, setStep] = useState(0);
   const [answer, setAnswer] = useState('');
   const [opened, setOpened] = useState(false);
+  const [entered, setEntered] = useState(false);
   const [hearts, setHearts] = useState([]);
 
   useEffect(() => {
@@ -31,10 +32,10 @@ function App() {
   }, []);
 
   const go = next => {
-    setStep(Math.max(0, Math.min(4, next)));
+    setStep(Math.max(0, Math.min(5, next)));
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
-  const restart = () => { setAnswer(''); setOpened(false); go(0); };
+  const restart = () => { setAnswer(''); setOpened(false); setEntered(false); go(0); };
 
   return (
     <main className="site-shell">
@@ -44,6 +45,10 @@ function App() {
       <div className="floating-hearts" aria-hidden="true">
         {hearts.map(heart => <span key={heart.id} style={{ left: heart.left + '%', fontSize: heart.size + 'px' }}>♡</span>)}
       </div>
+
+      {!entered && <section className="cinema-intro" aria-label="A little note for Princess">
+        <div className="cinema-frame"><span className="cinema-overline">A LITTLE SOMETHING, FROM MY HEART</span><div className="cinema-star">✦</div><p>for the one I call</p><h1>Princess<span>.</span></h1><div className="cinema-rule" /><p className="cinema-subtitle">Some words are worth slowing down for.</p><button className="button-primary cinema-enter" onClick={() => setEntered(true)}>Step into my little world <span>↗</span></button><span className="cinema-foot">MADE WITH LOVE · JUST FOR YOU</span></div>
+      </section>}
 
       <header className="masthead">
         <button className="brand" onClick={restart} aria-label="Start again">a little love note <span>✳</span></button>
@@ -137,7 +142,7 @@ function App() {
           <p className="gentle-note">You do not have to answer before you are ready. Your feelings matter, and I will respect the time you need.</p>
           {!answer ? (
             <div className="answer-actions">
-              <button className="button-primary" onClick={() => setAnswer('yes')}>I forgive you <span>♡</span></button>
+              <button className="button-primary" onClick={() => { setAnswer('yes'); go(5); }}>I forgive you <span>♡</span></button>
               <button className="button-quiet" onClick={() => setAnswer('time')}>I need a little time</button>
             </div>
           ) : (
@@ -152,13 +157,27 @@ function App() {
         </section>
       )}
 
-      <footer className="bottom-bar">
+      {step === 5 && (
+        <section className="scene smile-scene" key="smile">
+          <div className="smile-orbit" aria-hidden="true"><span>♡</span><i>✦</i></div>
+          <div className="section-kicker">A LITTLE BONUS, ONLY IF YOU FEEL LIKE IT <span>✦</span></div>
+          <p className="script-line">if your heart feels a little lighter,</p>
+          <h2 className="display-heading">send me a <em>smile.</em></h2>
+          <p className="smile-copy">If you really have forgiven me and feel like sharing it, send me a photo of that beautiful smile of yours. It would make my day to see it.</p>
+          <p className="smile-gentle">No pressure, Princess. No photo is needed to prove anything. Your forgiveness, your time, and your feelings are yours — and I will respect them.</p>
+          <div className="smile-ornament">♡ <span>✧</span> ♡</div>
+          <p className="smile-signoff">I hope I give you more reasons to smile. <strong>Always, me.</strong></p>
+          <button className="restart-link" onClick={restart}>↺ &nbsp; read this again</button>
+        </section>
+      )}
+
+      {step < 5 && <footer className="bottom-bar">
         {step > 0 ? <button onClick={() => go(step - 1)}>← BACK</button> : <span />}
         <div className="chapter-dots" aria-label="Choose a chapter">
           {[0, 1, 2, 3, 4].map(n => <button key={n} className={step === n ? 'active' : ''} onClick={() => go(n)} aria-label={'Go to chapter ' + (n + 1)} />)}
         </div>
         {step < 4 ? <button onClick={() => go(step + 1)}>CONTINUE →</button> : <span />}
-      </footer>
+      </footer>}
       <div className="copyright">MADE WITH LOVE, JUST FOR YOU <span>♡</span></div>
     </main>
   );
