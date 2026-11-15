@@ -22,6 +22,10 @@ function App() {
   const [hearts, setHearts] = useState([]);
 
   useEffect(() => {
+    document.body.classList.remove('booting');
+  }, []);
+
+  useEffect(() => {
     if (window.matchMedia?.('(prefers-reduced-motion: reduce)').matches) return;
     let id = 0;
     const timer = window.setInterval(() => {
