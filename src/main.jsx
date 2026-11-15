@@ -56,7 +56,7 @@ function App() {
       </header>
 
       <div className="journey-track" aria-label={'Chapter ' + (step + 1) + ' of 5'}>
-        <span style={{ width: ((step + 1) / 5) * 100 + '%' }} />
+        <span style={{ width: Math.min(((step + 1) / 5) * 100, 100) + '%' }} />
       </div>
 
       {step === 0 && (
