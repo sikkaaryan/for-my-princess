@@ -239,3 +239,43 @@ button:focus-visible{outline:2px solid #f1bdc9;outline-offset:5px}
  .cinema-intro-v2 *{animation:none!important}
  .intro-emblem path{stroke-dashoffset:0}
 }
+
+
+/* Restore the story-led cinematic intro, with an always-visible visual anchor */
+.cinema-intro{background:radial-gradient(ellipse at 50% 48%,#572036 0%,#24101a 55%,#09070a 100%);overflow:hidden}
+.cinema-frame{min-height:min(700px,86svh);padding:58px 18px 52px;justify-content:center}
+.cinema-overline{opacity:1;animation:none;font-size:8px;letter-spacing:.25em;text-align:center}
+.cinema-scene-art{position:absolute;inset:0;display:grid;place-items:center;pointer-events:none;opacity:.9}
+.scene-heart{font:clamp(130px,30vw,230px)/1 'Playfair Display',serif;color:#e9a4b633;text-shadow:0 0 45px #e77c9b45;transform:translateY(-2%);animation:scene-heart-pulse 4s ease-in-out infinite}
+.scene-spark{position:absolute;color:#f0b7c5;font-size:17px;text-shadow:0 0 18px #f4a6bd;animation:scene-spark 4s ease-in-out infinite}
+.spark-a{left:20%;top:28%}.spark-b{right:19%;top:39%;animation-delay:1.2s}.spark-c{left:27%;bottom:25%;animation-delay:2s}
+.cinema-beat{top:39%;font-size:clamp(24px,5vw,42px);color:#fff0f2;text-shadow:0 3px 28px #000;white-space:normal;padding:0 8px}
+.beat-one{animation:beat-reveal 1.55s 1.4s both}
+.beat-two{animation:beat-reveal 1.55s 3.05s both}
+.beat-three{animation:beat-reveal 1.7s 4.7s both}
+.cinema-title-wrap{top:34%;animation:title-arrive 1.5s 6.4s both}
+.cinema-title-wrap p{font-size:clamp(17px,3vw,22px);color:#f0c4ce}
+.cinema-title-wrap h1{font-size:clamp(37px,8vw,76px);text-shadow:0 5px 35px #0009}
+.cinema-name{top:61%;animation:name-reveal 1.25s 7.9s both}
+.cinema-name>span{font-size:9px}
+.cinema-name strong{font-size:clamp(49px,9vw,82px)}
+.cinema-subtitle{top:77%;font-size:15px;animation:cinema-word .8s 8.8s both}
+.cinema-enter{top:84%;min-width:150px;animation:cinema-word .8s 9.3s both,cinema-button .8s 9.3s both}
+.cinema-foot{bottom:5px;animation:cinema-word .8s 9.5s both}
+.cinema-light{animation:light-sweep 2.5s .2s both}
+@keyframes scene-heart-pulse{0%,100%{transform:translateY(-2%) scale(.96);opacity:.55}50%{transform:translateY(-2%) scale(1.05);opacity:.95}}
+@keyframes scene-spark{0%,100%{opacity:.25;transform:translateY(5px) scale(.8)}50%{opacity:.9;transform:translateY(-9px) scale(1.15)}}
+@media(max-width:600px){
+ .cinema-frame{min-height:82svh;padding:55px 12px 45px}
+ .cinema-beat{top:39%;font-size:clamp(23px,6vw,31px)}
+ .cinema-title-wrap{top:34%}
+ .cinema-name{top:61%}
+ .cinema-subtitle{top:77%}
+ .cinema-enter{top:85%}
+ .cinema-foot{font-size:6px}
+}
+@media(prefers-reduced-motion:reduce){
+ .cinema-scene-art *{animation:none!important}
+ .cinema-beat{display:none}
+ .cinema-title-wrap,.cinema-name,.cinema-subtitle,.cinema-enter,.cinema-foot{opacity:1!important;animation:none!important}
+}
