@@ -46,20 +46,23 @@ function App() {
         {hearts.map(heart => <span key={heart.id} style={{ left: heart.left + '%', fontSize: heart.size + 'px' }}>♡</span>)}
       </div>
 
-      {!entered && <section className="cinema-intro" aria-label="A little note for Princess">
-        <div className="cinema-letterbox top" /><div className="cinema-letterbox bottom" />
-        <div className="cinema-light" aria-hidden="true" />
-        <div className="cinema-particles" aria-hidden="true"><i>✦</i><i>·</i><i>✧</i><i>·</i><i>✦</i><i>·</i><i>✧</i></div>
-        <div className="cinema-frame">
-          <span className="cinema-overline">A MESSAGE I SHOULD HAVE SAID SOONER</span>
-          <div className="cinema-beat beat-one">In every story,</div>
-          <div className="cinema-beat beat-two">there are moments</div>
-          <div className="cinema-beat beat-three">we wish we could rewrite.</div>
-          <div className="cinema-title-wrap"><div className="cinema-title-rule" /><p>but some people</p><h1>are worth <em>everything.</em></h1><div className="cinema-title-rule" /></div>
-          <div className="cinema-name"><span>FOR MY</span><strong>Princess<span>.</span></strong></div>
-          <p className="cinema-subtitle">This is for you. And only you.</p>
-          <button className="button-primary cinema-enter" onClick={() => setEntered(true)}>Begin <span>↗</span></button>
-          <span className="cinema-foot">TAKE YOUR TIME · READ WITH YOUR HEART</span>
+      {!entered && <section className="cinema-intro-v2" aria-label="A little note for Princess">
+        <div className="intro-glow" aria-hidden="true" />
+        <div className="intro-frame">
+          <div className="intro-topline"><span /> A NOTE FROM MY HEART <span /></div>
+          <div className="intro-emblem" aria-hidden="true">
+            <svg viewBox="0 0 180 180" role="presentation">
+              <circle cx="90" cy="90" r="78" />
+              <circle cx="90" cy="90" r="66" />
+              <path d="M90 119 C72 104 52 91 52 72 C52 52 78 47 90 67 C102 47 128 52 128 72 C128 91 108 104 90 119Z" />
+            </svg>
+            <span>♡</span>
+          </div>
+          <p className="intro-pretitle">Some words deserve to be said properly.</p>
+          <h1 className="intro-heading">For my <em>Princess.</em></h1>
+          <p className="intro-subtitle">I have something important I want you to know.</p>
+          <button className="button-primary intro-begin" onClick={() => setEntered(true)}>Read my letter <span>↗</span></button>
+          <span className="intro-footnote">JUST YOU, ME, AND A LITTLE HONESTY</span>
         </div>
       </section>}
 
